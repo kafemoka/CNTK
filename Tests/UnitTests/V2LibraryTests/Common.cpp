@@ -4,7 +4,9 @@
 
 #define _CRT_SECURE_NO_WARNINGS // "secure" CRT not available on all platforms  --add this at the top of all CPP files that give "function or variable may be unsafe" warnings
 
-#include <string>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 bool IsGPUAvailable()
 {
