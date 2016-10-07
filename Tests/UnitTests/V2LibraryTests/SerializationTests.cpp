@@ -276,11 +276,12 @@ void SerializationTests()
     TestLearnerSerialization<float>(5, DeviceDescriptor::CPUDevice());
     TestLearnerSerialization<double>(10, DeviceDescriptor::CPUDevice());
 
-#ifndef CPUONLY
-    TestLearnerSerialization<float>(5, DeviceDescriptor::GPUDevice(0));
-    TestLearnerSerialization<double>(10, DeviceDescriptor::GPUDevice(0));;
-    TestModelSaving(DeviceDescriptor::GPUDevice(0));
-#endif
+    if (IsGPUAvailable())
+    {
+        TestLearnerSerialization<float>(5, DeviceDescriptor::GPUDevice(0));
+        TestLearnerSerialization<double>(10, DeviceDescriptor::GPUDevice(0));
+        TestModelSaving(DeviceDescriptor::GPUDevice(0));
+    }
 
     TestModelSaving(DeviceDescriptor::CPUDevice());
 }
